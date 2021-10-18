@@ -2,9 +2,20 @@
 
 #include "Team.h"
 
-// TODO Add data members here
+// Team Data Members:
+//     string teamName;
+//     string stadiumName;
+//     int seatingCapacity;
+//     string location;
+//     string conference;
+//     string division;
+//     string surfaceType;
+//     string stadiumRoofType;
+//     int dateOpened;
 
-// team constructor that sets private data memebers according to parameters
+// Team Constructor
+// The team constructor that sets private data memebers according to
+// parameters.
 Team::Team(string teamName, string stadiumName, int seatingCapacity,
      string location, string conference, string division,
      string surfaceType, string stadiumRoofType, int dateOpened)
@@ -20,58 +31,67 @@ Team::Team(string teamName, string stadiumName, int seatingCapacity,
     this->dateOpened = dateOpened;
 }
 
-// team destructor
+// Team Destructor
 Team::~Team() {}
 
-// returns the name of the team
+// getTeamName Function
+// The function returns the name of the team.
 string Team::getTeamName() const
 {
     return teamName;
 }
 
-// returns the name of the stadium
+// getStadiumName Function
+// The function returns the name of the stadium.
 string Team::getStadiumName() const
 {
     return stadiumName;
 }
 
-// returns the seating capacity of the stadium
+// getSeatingCapacity Function
+// The function returns the seating capacity of the stadium.
 int Team::getSeatingCapacity() const
 {
     return seatingCapacity;
 }
 
-// returns the location of the stadium
+// getLocation Function
+// The function returns the location of the stadium.
 string Team::getLocation() const
 {
     return location;
 }
 
-// returns the conference of the team
+// getConference Function
+// The function returns the conference of the team
 string Team::getConference() const
 {
     return conference;
 }
 
-// returns the division of the team
+// getDivision Function
+// The function returns the division of the team
 string Team::getDivision() const
 {
     return division;
 }
 
-// returns the surface type of the stadium
+// getSurfaceType Function
+// The function returns the surface type of the stadium.
 string Team::getSurfaceType() const
 {
     return surfaceType;
 }
 
-// returns the roof type of the stadium
+// getStadiumRoofType Function
+// The function returns the roof type of the stadium.
 string Team::getStadiumRoofType() const
 {
     return stadiumRoofType;
 }
 
-// returns the date the stadium opened
+// getDateOpened Function
+// The function returns the date the stadium opened.
 int Team::getDateOpened() const
 {
     return dateOpened;

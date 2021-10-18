@@ -46,13 +46,13 @@ public:
 private:
     string teamName;
     string stadiumName;
-    int seatingCapacity;
+    int    seatingCapacity;
     string location;
     string conference;
     string division;
     string surfaceType;
     string stadiumRoofType;
-    int dateOpened;
+    int    dateOpened;
 };
 
 #endif
