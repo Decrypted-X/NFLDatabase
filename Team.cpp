@@ -2,6 +2,8 @@
 
 #include "Team.h"
 
+// TODO Add data members here
+
 // team constructor that sets private data memebers according to parameters
 Team::Team(string teamName, string stadiumName, int seatingCapacity,
      string location, string conference, string division,
