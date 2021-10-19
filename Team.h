@@ -9,13 +9,16 @@ using namespace std;
 class Team
 {
 public:
-    // team constructor that sets private data memebers according to parameters
-    Team(string teamName, string stadiumName, int seatingCapacity,
-         string location, string conference, string division,
-         string surfaceType, string stadiumRoofType, int dateOpened);
+    // team constructor that sets private data memebers to default values
+    Team();
 
     // team destructor
     ~Team();
+
+    // sets the private data members according to parameters
+    void setTeam(string teamName, string stadiumName, int seatingCapacity,
+                 string location, string conference, string division,
+                 string surfaceType, string stadiumRoofType, int dateOpened);
 
     // returns the name of the team
     string getTeamName() const;

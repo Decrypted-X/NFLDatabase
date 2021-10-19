@@ -1,5 +1,6 @@
 // Teams.h  -  Class Specification
 
+#include <stdexcept>
 #include "Team.h"
 
 #ifndef TEAMS_H
@@ -14,25 +15,21 @@ public:
     // teams destructor
     ~Teams();
 
-    // sets the team amount and adjusts the size of the teams list
-    void setTeamAmount(int teamAmount);
-
     // returns the team amount
     int getTeamAmount() const;
 
-    // sets a team at the specific index
-    void setTeam(int index, Team* team);
+    // sets a team at the specific index according to parameters
+    void setTeam(int index, string teamName, string stadiumName,
+                int seatingCapacity, string location, string conference,
+                string division, string surfaceType, string stadiumRoofType,
+                int dateOpened);
 
-    // increases the size of thie list and adds a team to the end of the teams list
-    void addTeam(Team* team);
-
-    // returns the team at the index in the teams list
+    // returns the team at the index in the teams dynamic array
     Team* getTeam(int index) const;
-
-    // returns the list of teams
-    Team** getTeams() const;
 private:
-    int    teamAmount;
+    int teamAmount;
+
+    // teams dynamic array that holds all the teams in the database
     Team** teams;
 };
 

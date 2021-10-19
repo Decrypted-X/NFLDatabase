@@ -2,43 +2,68 @@
 
 #include "Teams.h"
 
-// teams constructor that sets private data memebers according to parameters
+// Team Data Members:
+//     int    teamAmount;
+//     Team** teams;
+
+
+// Teams Constructor
+// The teams constructor that sets team amount according to parameters and
+// initializes the dynamic teams array with default teams.
 Teams::Teams(int teamAmount)
 {
+    this->teamAmount = teamAmount;
 
+    teams = new Team*[teamAmount];
+
+    // fills the teams dynamic array with default teams
+    for (int i = 0; i < teamAmount; i++)
+    {
+        teams[i] = new Team();
+    }
 }
 
-// teams destructor
+
+// Teams Destructor
+// The team destructor eletes each team in the teams dynamic array and then
+// deletes the teams dynamic array.
 Teams::~Teams()
 {
+    // deletes all the teams in the teams dynamic array
+    for (int i = 0; i < teamAmount; i++)
+    {
+        delete teams[i];
+    }
 
+    delete [] teams;
 }
 
-// sets the team amount and adjusts the size of the teams list
-void Teams::setTeamAmount(int teamAmount)
-{
 
-}
-
-// returns the team amount
+// getTeamAmount Function
+// The function returns the amount of teams in the teams dynamic array.
 int Teams::getTeamAmount() const
 {
-
+    return teamAmount;
 }
 
-// sets a team at the specific index
-void Teams::setTeam(int index, Team* team)
+
+// setTeam Function
+// The function sets a team's private data members at the specific index according
+// to parameters.
+void Teams::setTeam(int index, string teamName, string stadiumName,
+                    int seatingCapacity, string location, string conference,
+                    string division, string surfaceType, string stadiumRoofType,
+                    int dateOpened)
 {
-
+    teams[index]->setTeam(teamName, stadiumName, seatingCapacity, location,
+                          conference, division, surfaceType, stadiumRoofType,
+                          dateOpened);
 }
 
-// increases the size of thie list and adds a team to the end of the teams list
-void Teams::addTeam(Team* team)
-{
 
-}
-
-// returns the team at the index in the teams list
+// getTeam Function
+// The function returns the team at the index in the teams dynamic array or throws
+// an exception if the index is out of bounds.
 Team* Teams::getTeam(int index) const
 {
     if (index >= teamAmount || index < 0)
@@ -47,10 +72,4 @@ Team* Teams::getTeam(int index) const
     }
 
     return teams[index];
-}
-
-// returns the list of teams
-Team** Teams::getTeams() const
-{
-    return teams;
 }

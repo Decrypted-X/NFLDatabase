@@ -10,11 +10,13 @@ CONFIG += c++11
 
 SOURCES += \
     Team.cpp \
+    Teams.cpp \
     main.cpp \
     mainwindow.cpp
 
 HEADERS += \
     Team.h \
+    Teams.h \
     mainwindow.h
 
 FORMS += \
