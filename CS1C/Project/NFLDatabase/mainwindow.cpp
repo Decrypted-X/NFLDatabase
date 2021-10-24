@@ -7,16 +7,27 @@ MainWindow::MainWindow(QWidget *parent)
 {
 
     ui->setupUi(this);
-    openFile();
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
 }
-void MainWindow::openFile()
+
+void MainWindow::on_sort_items_clicked()
 {
-    QFile inputFile("C:/Users/Connor/Desktop/College Classes/CS1C/Project/NFLDatabase/NFLInformation.csv.csv");
+
+   ui->tableWidget->selectColumn(3);
+}
+
+
+void MainWindow::on_ImportButton_clicked()
+{
+
+    QString filePath = QFileDialog::getOpenFileName(this, "Import CSV Files", QDir::rootPath(), "CSV Files (*csv)");
+    QFile inputFile(filePath);
+    qDebug() << filePath << " here is the path to your file for easy copy pasting when editing.";
+
     if (!inputFile.open(QFile::Text | QFile::ReadOnly))
     {
         return;
@@ -44,12 +55,6 @@ void MainWindow::openFile()
             }
            inputFile.flush();
            inputFile.close();
-}
-}
-
-void MainWindow::on_sort_items_clicked()
-{
-
-   ui->tableWidget->selectColumn(3);
+    }
 }
 

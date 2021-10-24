@@ -37,6 +37,19 @@
      <string>Sort By Capacity</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="ImportButton">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>20</y>
+      <width>141</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Import CSV File</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

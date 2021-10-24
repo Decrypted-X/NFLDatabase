@@ -21,9 +21,9 @@ public:
 
 private slots:
     void on_sort_items_clicked();
+    void on_ImportButton_clicked();
 
 private:
     Ui::MainWindow *ui;
-    void openFile();
 };
 #endif // MAINWINDOW_H
