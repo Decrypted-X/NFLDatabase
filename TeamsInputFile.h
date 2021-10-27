@@ -2,7 +2,7 @@
 
 #include "Teams.h"
 #include <iostream>
-#include <fstream>
+#include "QFile"
 
 #ifndef TEAMSINPUTFILE_H
 #define TEAMSINPUTFILE_H
@@ -11,19 +11,18 @@ class TeamsInputFile
 {
 public:
     // TeamsInputFile constructor that sets private data memebers according to parameters
-    TeamsInputFile(string source);
+    TeamsInputFile(QString source);
 
     // assigns a dynamic array of teams with teams in the input file
     Teams* getTeams();
 private:
-    // the source of the input file
-    string source;
+    string getInputFromFile(QFile& inputFile);
 
-    // the amount of characters that can be taken in input
-    const int INPUT_SIZE = 10000;
+    // the source of the input file
+    QString source;
 
     // the separator between each input column
-    const char SEPARATOR = '|';
+    const char DELIMITER = '|';
 };
 
 #endif
