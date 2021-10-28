@@ -1,4 +1,10 @@
-// Team.h  -  Class Specification
+/**
+ * @version 1.0
+ *
+ * @section DESCRIPTION
+ *
+ * The team class represents one team that is stored in the NFL Database.
+ */
 
 #include <string>
 using namespace std;
@@ -9,53 +15,119 @@ using namespace std;
 class Team
 {
 public:
-    // team constructor that sets private data memebers to default values
+    /**
+     * Default constructor that sets private data members to default values.
+     */
     Team();
 
-    // team destructor
-    ~Team();
-
-    // sets the private data members according to parameters
+    /**
+     * Set the private data members of the team according to parameters.
+     *
+     * @param teamName is the name of the team.
+     * @param stadiumName is the name of the stadium.
+     * @param seatingCapacity is the amount of people that can sit at the
+     *        stadium.
+     * @param location is the location of the stadium.
+     * @param conference is the conference that the team is in.
+     * @param division is the division that the team is in.
+     * @param surfaceType is the type of surface on the field of the stadium.
+     * @param stadiumRoofType is the type of roof of the stadium.
+     * @param dateOpened is the date that the stadium opened.
+     */
     void setTeam(string teamName, string stadiumName, int seatingCapacity,
                  string location, string conference, string division,
                  string surfaceType, string stadiumRoofType, int dateOpened);
 
-    // returns the name of the team
+    /**
+     * Get the name of the team.
+     *
+     * @return A string object that holds the name of the team.
+     */
     string getTeamName() const;
 
-    // returns the name of the stadium
+    /**
+     * Get the name of the stadium.
+     *
+     * @return A string object that holds the name of the stadium.
+     */
     string getStadiumName() const;
 
-    // returns the seating capacity of the stadium
+    /**
+     * Get the amount of people that can sit at the stadium.
+     *
+     * @return An integer that holds the seating capacity of the stadium.
+     */
     int getSeatingCapacity() const;
 
-    // returns the location of the stadium
+    /**
+     * Get the location of the stadium.
+     *
+     * @return A string object that holds the location of the stadium.
+     */
     string getLocation() const;
 
-    // returns the conference of the team
+    /**
+     * Get the conference of the team.
+     *
+     * @return A string object that holds the conference of the team.
+     */
     string getConference() const;
 
-    // returns the division of the team
+    /**
+     * Get the divison of the team.
+     *
+     * @return A string object that holds the division of the team.
+     */
     string getDivision() const;
 
-    // returns the surface type of the stadium
+    /**
+     * Get the type of surface on the field of the stadium.
+     *
+     * @return A string object that holds the surface type of the field in
+     *         the stadium.
+     */
     string getSurfaceType() const;
 
-    // returns the roof type of the stadium
+    /**
+     * Get the type of roof of the stadium.
+     *
+     * @return A string object that holds the type of roof of the stadium.
+     */
     string getStadiumRoofType() const;
 
-    // returns the date the stadium opened
+    /**
+     * Get the year that the stadium opened.
+     *
+     * @return A string object that holds the date the stadium opened.
+     */
     int getDateOpened() const;
 private:
+    /// A string that holds the name of the team.
     string teamName;
+
+    /// A string that holds the name of the stadium.
     string stadiumName;
-    int    seatingCapacity;
+
+    /// An integer that holds the amount of people that can sit at the stadium.
+    int seatingCapacity;
+
+    /// A string that holds the location of the stadium.
     string location;
+
+    /// A string that holds the conference that the team is in.
     string conference;
+
+    /// A string that holds the division that the team is in.
     string division;
+
+    /// A string that holds the type of surface on the field of the stadium.
     string surfaceType;
+
+    /// A string that holds the type of roof of the stadium.
     string stadiumRoofType;
-    int    dateOpened;
+
+    /// An integer that holds the date that the stadium opened.
+    int dateOpened;
 };
 
 #endif

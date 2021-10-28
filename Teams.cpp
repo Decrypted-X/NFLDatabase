@@ -7,7 +7,6 @@
 //     Team** teams;
 
 
-// Teams Constructor
 // The teams constructor that sets team amount according to parameters and
 // initializes the dynamic teams array with default teams.
 Teams::Teams(int teamAmount)
@@ -24,7 +23,6 @@ Teams::Teams(int teamAmount)
 }
 
 
-// Teams Destructor
 // The team destructor eletes each team in the teams dynamic array and then
 // deletes the teams dynamic array.
 Teams::~Teams()
@@ -39,7 +37,6 @@ Teams::~Teams()
 }
 
 
-// getTeamAmount Function
 // The function returns the amount of teams in the teams dynamic array.
 int Teams::getTeamAmount() const
 {
@@ -47,7 +44,6 @@ int Teams::getTeamAmount() const
 }
 
 
-// setTeam Function
 // The function sets a team's private data members at the specific index according
 // to parameters.
 void Teams::setTeam(int index, string teamName, string stadiumName,
@@ -61,7 +57,6 @@ void Teams::setTeam(int index, string teamName, string stadiumName,
 }
 
 
-// getTeam Function
 // The function returns the team at the index in the teams dynamic array or throws
 // an exception if the index is out of bounds.
 Team* Teams::getTeam(int index) const

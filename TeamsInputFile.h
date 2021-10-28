@@ -1,8 +1,15 @@
-// InputFile.h  -  Class Specification
+/**
+ * @version 1.0
+ *
+ * @section DESCRIPTION
+ *
+ * The teams input file class handles input taken from the NFL Database Input
+ * file.
+ */
 
 #include "Teams.h"
-#include <iostream>
 #include "QFile"
+#include <iostream>
 
 #ifndef TEAMSINPUTFILE_H
 #define TEAMSINPUTFILE_H
@@ -10,18 +17,40 @@
 class TeamsInputFile
 {
 public:
-    // TeamsInputFile constructor that sets private data memebers according to parameters
+    /**
+     * Constructor that sets private data members according to parameters.
+     *
+     * @param source is the path to the NFL Database Input file that will be
+     *        used by the TeamsInputFile class.
+     */
     TeamsInputFile(QString source);
 
-    // assigns a dynamic array of teams with teams in the input file
+    /**
+     * Get a pointer to a Teams object that holds all the teams that are
+     * stored in the NFL Database Input file.
+     *
+     * @return A pointer to a Teams object that holds all the teams stored in
+     *         the database file.
+     */
     Teams* getTeams();
 private:
+    /**
+     * Get an input value from the input file that is at the source path. Input
+     * stops when a delimiter or a newline character is found, or the function
+     * has reached the end of the file.
+     *
+     * @param inputFile is an open input file that input will be extracted from.
+     * @return A string object that holds input that was taken from the inputFile
+     *         passed.
+     */
     string getInputFromFile(QFile& inputFile);
 
-    // the source of the input file
+    /// A QString object that holds the path to the NFL Database Input file that
+    /// is used in member functions.
     QString source;
 
-    // the separator between each input column
+    /// A delimiter that is used in functions to determine where to stop reading
+    /// when taking in input.
     const char DELIMITER = '|';
 };
 
