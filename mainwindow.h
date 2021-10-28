@@ -1,6 +1,7 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include "TeamsInputFile.h"
 #include <QMainWindow>
 
 QT_BEGIN_NAMESPACE
@@ -15,7 +16,13 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+    void displayTeams();
+
+    void updateTeams();
 private:
     Ui::MainWindow *ui;
+
+    Teams* nfcTeams;
+    Teams* afcTeams;
 };
 #endif // MAINWINDOW_H
