@@ -38,8 +38,9 @@ string TeamsInputFile::getInputFromFile(QFile& inputFile)
 }
 
 
-// Function that assigns a dynamic array of teams with teams in the input file.
-Teams* TeamsInputFile::getTeams()
+// Function that assigns a dynamic array of teams with teams in the input file that
+// are in the conference passed.
+Teams* TeamsInputFile::getTeams(string conference)
 {
     // declares a teams object and the inputFile
     Teams* teams;
@@ -55,11 +56,28 @@ Teams* TeamsInputFile::getTeams()
         // holds the index of the current team being put into the teams object
         int currentTeam = 0;
 
-        // gets the amount of teams held in the input file
+        // gets the amount of teams held in the input file that have the conference
+        // passed
         while (!inputFile.atEnd())
         {
+            // skips input for team name, stadium name, seating capacity, and location
+            getInputFromFile(inputFile);
+            getInputFromFile(inputFile);
+            getInputFromFile(inputFile);
+            getInputFromFile(inputFile);
+
+            // gets the conference of the team
+            string teamConference = getInputFromFile(inputFile);
+
+            // if the team conference from the input file matches the conference passed
+            // as a parameter, then increment the amount of teams
+            if (teamConference == conference)
+            {
+                teamAmount++;
+            }
+
+            // skips remaining input for the team
             inputFile.readLine();
-            teamAmount++;
         }
 
         // creates a new teams object with the number of teams in the input file and
@@ -82,20 +100,33 @@ Teams* TeamsInputFile::getTeams()
 
             string location = getInputFromFile(inputFile);
 
-            string conference = getInputFromFile(inputFile);
+            string teamConference = getInputFromFile(inputFile);
 
-            string division = getInputFromFile(inputFile);
+            // if the team conference from the input file matches the conference passed as a parameter,
+            // then continue to get input for the team and put the team into a team object in the teams
+            // object
+            // otherwise, skip the rest of the input for this team and go to the next team in the input
+            // file
+            if (teamConference == conference)
+            {
+                string division = getInputFromFile(inputFile);
 
-            string surfaceType = getInputFromFile(inputFile);
+                string surfaceType = getInputFromFile(inputFile);
 
-            string stadiumRoofType = getInputFromFile(inputFile);
+                string stadiumRoofType = getInputFromFile(inputFile);
 
-            int dateOpened = stoi(getInputFromFile(inputFile));
+                int dateOpened = stoi(getInputFromFile(inputFile));
 
-            // sets the private data members of a team object in the dynamic array of teams
-            // using data from the input file
-            teams->setTeam(currentTeam++, teamName, stadiumName, seatingCapacity, location,
-                           conference, division, surfaceType, stadiumRoofType, dateOpened);
+                // sets the private data members of a team object in the dynamic array of teams
+                // using data from the input file
+                teams->setTeam(currentTeam++, teamName, stadiumName, seatingCapacity, location,
+                               teamConference, division, surfaceType, stadiumRoofType, dateOpened);
+            }
+            else
+            {
+                // skips remaining input for the team
+                inputFile.readLine();
+            }
         }
 
         // closes the input file after getting input and putting it in the teams object

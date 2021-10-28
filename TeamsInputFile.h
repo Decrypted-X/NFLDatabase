@@ -27,12 +27,15 @@ public:
 
     /**
      * Get a pointer to a Teams object that holds all the teams that are
-     * stored in the NFL Database Input file.
+     * in the conference specified by the parameter and stored in the NFL
+     * Database Input file.
      *
-     * @return A pointer to a Teams object that holds all the teams stored in
-     *         the database file.
+     * @param conference is the conference of the teams that will be retrieved
+     *        by the function.
+     * @return A pointer to a Teams object that holds all the teams in a
+     *         conference stored in the database file.
      */
-    Teams* getTeams();
+    Teams* getTeams(string conference);
 private:
     /**
      * Get an input value from the input file that is at the source path. Input
