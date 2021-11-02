@@ -7,9 +7,9 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-    TeamsInputFile inputFile(":/input/NFLDatabaseInput.dat");
-    nfcTeams = inputFile.getTeams("National Football Conference");
-    afcTeams = inputFile.getTeams("American Football Conference");
+    TeamsInputFile* inputFile = new TeamsInputFile(":/input/NFLDatabaseInput.dat");
+    nfcTeams = inputFile->getTeams("National Football Conference");
+    afcTeams = inputFile->getTeams("American Football Conference");
 
     displayTeams();
 }
@@ -17,6 +17,9 @@ MainWindow::MainWindow(QWidget *parent)
 
 MainWindow::~MainWindow()
 {
+    delete inputFile;
+    delete nfcTeams;
+    delete afcTeams;
     delete ui;
 }
 
@@ -32,7 +35,6 @@ void MainWindow::updateTeams()
     delete nfcTeams;
     delete afcTeams;
 
-    TeamsInputFile inputFile(":/input/NFLDatabaseInput.dat");
-    nfcTeams = inputFile.getTeams("National Football Conference");
-    afcTeams = inputFile.getTeams("American Football Conference");
+    nfcTeams = inputFile->getTeams("National Football Conference");
+    afcTeams = inputFile->getTeams("American Football Conference");
 }

@@ -22,6 +22,7 @@ public:
 private:
     Ui::MainWindow *ui;
 
+    TeamsInputFile* inputFile;
     Teams* nfcTeams;
     Teams* afcTeams;
 };
