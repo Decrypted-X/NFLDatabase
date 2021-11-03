@@ -21,6 +21,11 @@ public:
     Team();
 
     /**
+     * Destructor that deallocates memory used by the object.
+     */
+    ~Team();
+
+    /**
      * Set the private data members of the team according to parameters.
      *
      * @param teamName is the name of the team.

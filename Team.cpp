@@ -30,6 +30,10 @@ Team::Team()
 }
 
 
+// The team destructor.
+Team::~Team() {};
+
+
 // The function sets the private data members according to parameters.
 void Team::setTeam(string teamName, string stadiumName, int seatingCapacity,
              string location, string conference, string division,

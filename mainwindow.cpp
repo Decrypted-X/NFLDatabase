@@ -15,6 +15,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->totalAmountLabel->setVisible(false);
 
     helpWindow = NULL;
+    contactUsWindow = NULL;
 
     // TODO Sort by team name here for the nfc teams
 
@@ -32,6 +33,8 @@ MainWindow::~MainWindow()
         }
     }
 
+    delete helpWindow;
+    delete contactUsWindow;
     delete inputFile;
     delete nfcTeams;
     delete afcTeams;
@@ -178,6 +181,20 @@ void MainWindow::on_actionHelp_triggered()
     if (!helpWindow->isVisible())
     {
         helpWindow->show();
+    }
+}
+
+
+void MainWindow::on_actionContact_Us_triggered()
+{
+    if (!contactUsWindow)
+    {
+        contactUsWindow = new ContactUsWindow(this);
+    }
+
+    if (!contactUsWindow->isVisible())
+    {
+        contactUsWindow->show();
     }
 }
 

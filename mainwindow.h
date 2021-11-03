@@ -3,6 +3,7 @@
 
 #include "TeamsInputFile.h"
 #include "helpwindow.h"
+#include "contactuswindow.h"
 #include <QMainWindow>
 
 QT_BEGIN_NAMESPACE
@@ -26,10 +27,13 @@ private slots:
 
     void on_actionHelp_triggered();
 
+    void on_actionContact_Us_triggered();
+
 private:
     Ui::MainWindow *ui;
 
     HelpWindow* helpWindow;
+    ContactUsWindow* contactUsWindow;
 
     void displayTeam(int row, Team* team);
 
