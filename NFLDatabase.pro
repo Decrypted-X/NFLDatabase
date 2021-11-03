@@ -12,6 +12,7 @@ SOURCES += \
     Team.cpp \
     Teams.cpp \
     TeamsInputFile.cpp \
+    helpwindow.cpp \
     main.cpp \
     mainwindow.cpp
 
@@ -19,9 +20,11 @@ HEADERS += \
     Team.h \
     Teams.h \
     TeamsInputFile.h \
+    helpwindow.h \
     mainwindow.h
 
 FORMS += \
+    helpwindow.ui \
     mainwindow.ui
 
 # Default rules for deployment.
