@@ -1,4 +1,4 @@
-// Team.h  -  Class Implementation
+// Team.cpp  -  Class Implementation
 
 #include "Team.h"
 

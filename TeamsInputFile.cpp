@@ -1,4 +1,4 @@
-// Teams.cpp  -  Class Implementation
+// TeamsInputFile.cpp  -  Class Implementation
 
 #include "TeamsInputFile.h"
 
