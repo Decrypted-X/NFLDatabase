@@ -60,11 +60,13 @@ private slots:
      * conference they want to see.
      */
     void on_conferenceSelect_currentTextChanged();
+
     /**
-         * When the user changes the display options for what they want to be displayed, the function is called to
-         * display the list of teams the user wants by team name, stadium name, seating capacity, or location.
-         */
+     * When the user changes the display options for what they want to be displayed, the function is called to
+     * display the list of teams the user wants by team name, stadium name, seating capacity, or location.
+     */
    void on_sortSelect_currentTextChanged();
+
     /**
      * When the user clicks the help button in the menu bar, the function is called to open the
      * help window and display it to the user.
