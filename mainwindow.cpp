@@ -229,6 +229,9 @@ void MainWindow::on_conferenceSelect_currentTextChanged()
     }
 
     displayTeams();
+
+    // sorts teams by team name
+    ui->displayTable->sortItems(0, Qt::AscendingOrder);
 }
 
 
@@ -240,11 +243,18 @@ void MainWindow::on_sortSelect_currentTextChanged()
     // Index 1 - Stadium Name
     // Index 2 - Seating Capacity
     // Index 3 - Location
-    if (ui->sortSelect->currentIndex() == 2)
+    switch (ui->sortSelect->currentIndex())
     {
+    case 0:
+        ui->displayTable->sortItems(0, Qt::AscendingOrder);
+        break;
+    case 1:
+         ui->displayTable->sortItems(1, Qt::AscendingOrder);
+         break;
+    case 2:
         ui->displayTable->sortItems(2, Qt::DescendingOrder);
+        break;
     }
-
 }
 
 
