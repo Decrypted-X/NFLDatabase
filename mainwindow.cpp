@@ -69,7 +69,7 @@ MainWindow::~MainWindow()
 // function.
 void MainWindow::displayTeam(int row, Team* team)
 {
-    // temporarily holds data that is going to be displayed on the datat display table
+    // temporarily holds data that is going to be displayed on the data display table
     QTableWidgetItem* tempItem;
 
     // displays the name of the team
@@ -230,8 +230,28 @@ void MainWindow::on_conferenceSelect_currentTextChanged()
 
     displayTeams();
 }
+// The function is called when the user selects sorting method. It updates the sort drop down based
+// on the conference selected, and calls the displayTeams function.
+void MainWindow::on_sortSelect_currentTextChanged()
+{
+    // Index 0 - Team Name
+    // Index 1 - Stadium Name
+    // Index 2 - Seating Capacity
+    // Index 3 - Location
+    if (ui->sortSelect->currentIndex() == 2)
+    {
+        ui->displayTable->sortItems(2,Qt::DescendingOrder);
+    }
+    if (ui->sortSelect->currentIndex() == 0)
+    {
+        ui->displayTable->sortItems(0,Qt::DescendingOrder);
+    }
+    if(ui->sortSelect->currentIndex() == 1)
+    {
+        ui->displayTable->sortItems(1, Qt::DescendingOrder);
+    }
 
-
+}
 // The function is called when the user clicks the help button. It creates and displays a help window to
 // the user.
 void MainWindow::on_actionHelp_triggered()
