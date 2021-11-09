@@ -36,9 +36,10 @@ MainWindow::MainWindow(QWidget *parent)
     helpWindow = NULL;
     contactUsWindow = NULL;
 
-    // TODO Sort by team name here for the nfc teams
-
     displayTeams();
+
+    // sorts teams by team name
+    ui->displayTable->sortItems(0, Qt::AscendingOrder);
 }
 
 
@@ -69,7 +70,7 @@ MainWindow::~MainWindow()
 // function.
 void MainWindow::displayTeam(int row, Team* team)
 {
-    // temporarily holds data that is going to be displayed on the datat display table
+    // temporarily holds data that is going to be displayed on the data display table
     QTableWidgetItem* tempItem;
 
     // displays the name of the team
@@ -218,17 +219,41 @@ void MainWindow::on_conferenceSelect_currentTextChanged()
         ui->sortSelect->addItem("Stadium Name");
         ui->sortSelect->addItem("Seating Capacity");
         ui->sortSelect->addItem("Location");
-
-        // TODO Sort by team name here for the nfc teams
     }
     else
     {
         ui->sortSelect->setMaxCount(1);
-
-        // TODO Sort by team name here for the afc teams
     }
 
     displayTeams();
+
+    // sorts teams by team name
+    ui->displayTable->sortItems(0, Qt::AscendingOrder);
+}
+
+// The function is called when the user selects sorting method. It updates the sort drop down based
+// on the conference selected, and calls the displayTeams function.
+void MainWindow::on_sortSelect_currentTextChanged()
+{
+    // Index 0 - Team Name
+    // Index 1 - Stadium Name
+    // Index 2 - Seating Capacity
+    // Index 3 - Location
+    switch (ui->sortSelect->currentIndex())
+    {
+    case 0:
+        ui->displayTable->sortItems(0, Qt::AscendingOrder);
+        break;
+    case 1:
+         ui->displayTable->sortItems(1, Qt::AscendingOrder);
+         break;
+    case 2:
+        ui->displayTable->sortItems(2, Qt::DescendingOrder);
+        break;
+    case 3:
+        ui->displayTable->sortItems(3, Qt::AscendingOrder);
+        break;
+    }
 }
 
 
