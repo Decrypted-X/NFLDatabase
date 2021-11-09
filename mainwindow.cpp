@@ -231,7 +231,6 @@ void MainWindow::on_conferenceSelect_currentTextChanged()
     ui->displayTable->sortItems(0, Qt::AscendingOrder);
 }
 
-
 // The function is called when the user selects sorting method. It updates the sort drop down based
 // on the conference selected, and calls the displayTeams function.
 void MainWindow::on_sortSelect_currentTextChanged()
@@ -250,6 +249,9 @@ void MainWindow::on_sortSelect_currentTextChanged()
          break;
     case 2:
         ui->displayTable->sortItems(2, Qt::DescendingOrder);
+        break;
+    case 3:
+        ui->displayTable->sortItems(3, Qt::DescendingOrder);
         break;
     }
 }
