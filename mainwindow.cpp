@@ -251,7 +251,7 @@ void MainWindow::on_sortSelect_currentTextChanged()
         ui->displayTable->sortItems(2, Qt::DescendingOrder);
         break;
     case 3:
-        ui->displayTable->sortItems(3, Qt::DescendingOrder);
+        ui->displayTable->sortItems(3, Qt::AscendingOrder);
         break;
     }
 }
