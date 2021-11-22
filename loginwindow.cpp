@@ -18,9 +18,18 @@ LoginWindow::~LoginWindow()
 }
 
 
+void LoginWindow::reject()
+{
+    ui->lineEdit_pass->setText("");
+
+    hide();
+}
+
+
 void LoginWindow::on_loginButton_clicked()
 {
     QString enteredPassword = ui->lineEdit_pass->text();
+    ui->lineEdit_pass->setText("");
 
     if (enteredPassword == "test")
     {
@@ -33,10 +42,12 @@ void LoginWindow::on_loginButton_clicked()
         {
             addTeamWindow->show();
         }
+
+        reject();
     }
     else
     {
-        QMessageBox::warning (this, "Login", "Password was not correct");
+        QMessageBox::warning(this, "Login", "Password was not correct");
     }
 }
 

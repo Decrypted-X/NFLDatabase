@@ -18,6 +18,8 @@ public:
 
     ~LoginWindow();
 
+    void reject();
+
 private slots:
     void on_loginButton_clicked();
 

@@ -15,7 +15,41 @@ AddTeamWindow::AddTeamWindow(QWidget *parent) :
 
 AddTeamWindow::~AddTeamWindow()
 {
+    delete inputFile;
     delete ui;
+}
+
+
+void AddTeamWindow::resetInput()
+{
+    ui->teamNameInput->setStyleSheet("border-style: none;");
+    ui->stadiumNameInput->setStyleSheet("border-style: none;");
+    ui->seatingCapacityInput->setStyleSheet("border-style: none;");
+    ui->locationInput->setStyleSheet("border-style: none;");
+    ui->conferenceInput->setStyleSheet("border-style: none;");
+    ui->divisionInput->setStyleSheet("border-style: none;");
+    ui->surfaceTypeInput->setStyleSheet("border-style: none;");
+    ui->stadiumRoofTypeInput->setStyleSheet("border-style: none;");
+    ui->dateOpenedInput->setStyleSheet("border-style: none;");
+
+    ui->teamNameInput->setText("");
+    ui->stadiumNameInput->setText("");
+    ui->seatingCapacityInput->setText("");
+    ui->locationInput->setText("");
+    ui->conferenceInput->setText("");
+    ui->divisionInput->setText("");
+    ui->surfaceTypeInput->setText("");
+    ui->stadiumRoofTypeInput->setText("");
+    ui->dateOpenedInput->setText("");
+
+    ui->statusMessage->setVisible(false);
+}
+
+
+void AddTeamWindow::reject()
+{
+    resetInput();
+    hide();
 }
 
 
@@ -85,6 +119,8 @@ void AddTeamWindow::on_addTeamButton_clicked()
 
     if (!ui->statusMessage->isVisible())
     {
+        resetInput();
+
         ui->statusMessage->setText("Team added.");
         ui->statusMessage->setStyleSheet("color: green;");
         ui->statusMessage->setVisible(true);
@@ -94,18 +130,7 @@ void AddTeamWindow::on_addTeamButton_clicked()
                          division, surfaceType, stadiumRoofType, dateOpened);
 
         inputFile->addTeam(newTeam);
-
-        ui->teamNameInput->setStyleSheet("border-style: none;");
-        ui->stadiumNameInput->setStyleSheet("border-style: none;");
-        ui->seatingCapacityInput->setStyleSheet("border-style: none;");
-        ui->locationInput->setStyleSheet("border-style: none;");
-        ui->conferenceInput->setStyleSheet("border-style: none;");
-        ui->divisionInput->setStyleSheet("border-style: none;");
-        ui->surfaceTypeInput->setStyleSheet("border-style: none;");
-        ui->stadiumRoofTypeInput->setStyleSheet("border-style: none;");
-        ui->dateOpenedInput->setStyleSheet("border-style: none;");
     }
 
     ui->addTeamButton->setEnabled(true);
 }
-

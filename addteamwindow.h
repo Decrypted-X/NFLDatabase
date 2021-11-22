@@ -19,10 +19,14 @@ public:
 
     ~AddTeamWindow();
 
+    void reject();
+
 private slots:
     void on_addTeamButton_clicked();
 
 private:
+    void resetInput();
+
     string getValidStringProperty(QLineEdit* input);
 
     int getValidIntProperty(QLineEdit* input);
