@@ -311,3 +311,11 @@ void MainWindow::on_actionLoginWin_triggered()
     }
 }
 
+
+void MainWindow::on_refreshTableButton_clicked()
+{
+    updateTeams();
+    displayTeams();
+    on_sortSelect_currentTextChanged();
+}
+

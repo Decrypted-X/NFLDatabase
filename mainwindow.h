@@ -87,6 +87,8 @@ private slots:
      */
     void on_actionLoginWin_triggered();
 
+    void on_refreshTableButton_clicked();
+
 private:
     /**
      * Display the data of one team in a row in the data display table that is given by the
