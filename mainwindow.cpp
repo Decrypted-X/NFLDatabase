@@ -7,6 +7,7 @@
 //     Ui::MainWindow *ui;
 //     HelpWindow* helpWindow;
 //     ContactUsWindow* contactUsWindow;
+//     LoginWindow* loginWindow;
 //     TeamsInputFile* inputFile;
 //     Teams* nfcTeams;
 //     Teams* afcTeams;
@@ -21,7 +22,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
 
     // creates a teams input file object with a path to the input file
-    inputFile = new TeamsInputFile(":/input/NFLDatabaseInput.dat");
+    inputFile = new TeamsInputFile("C:/ProgramData/NFLDatabase/NFLDatabaseInput.dat");
 
     // gets teams objects for the nfc and the afc and stores them in the nfcTeams and afcTeams
     // pointers respectively
@@ -32,9 +33,10 @@ MainWindow::MainWindow(QWidget *parent)
     ui->totalLabel->setVisible(false);
     ui->totalAmountLabel->setVisible(false);
 
-    // initializes the helpWindow and contactUsWindow pointers to null
+    // initializes the helpWindow, contactUsWindow, and loginWindow pointers to null
     helpWindow = NULL;
     contactUsWindow = NULL;
+    loginWindow = NULL;
 
     displayTeams();
 
@@ -59,6 +61,7 @@ MainWindow::~MainWindow()
 
     delete helpWindow;
     delete contactUsWindow;
+    delete loginWindow;
     delete inputFile;
     delete nfcTeams;
     delete afcTeams;
@@ -289,6 +292,22 @@ void MainWindow::on_actionContact_Us_triggered()
     if (!contactUsWindow->isVisible())
     {
         contactUsWindow->show();
+    }
+}
+
+
+void MainWindow::on_actionLoginWin_triggered()
+{
+    // if the login window is not initialized, then create a new login window
+    if (!loginWindow)
+    {
+        loginWindow = new LoginWindow(this);
+    }
+
+    // if the login window is not visible, then show the login window
+    if (!loginWindow->isVisible())
+    {
+        loginWindow->show();
     }
 }
 

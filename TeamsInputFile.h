@@ -8,7 +8,9 @@
  */
 
 #include "Teams.h"
-#include "QFile"
+#include <QFile>
+#include <QTextStream>
+#include <QDir>
 #include <iostream>
 
 #ifndef TEAMSINPUTFILE_H
@@ -36,6 +38,15 @@ public:
      *         conference stored in the database file.
      */
     Teams* getTeams(string conference);
+
+    /**
+     * Append a team to the end of the input file.
+     *
+     * @param team is the team that will be appended to the end of the input file.
+     * @param inputFile is an open input file that a team will be appended to.
+     */
+    void addTeam(Team& team);
+
 private:
     /**
      * Get an input value from the input file that is at the source path. Input
@@ -47,6 +58,10 @@ private:
      *         passed.
      */
     string getInputFromFile(QFile& inputFile);
+
+    void addTeamProperty(QFile& inputFile, QTextStream& output, string property, bool isLast);
+
+    void addTeamProperty(QFile& inputFile, QTextStream& output, int property, bool isLast);
 
     /// A QString object that holds the path to the NFL Database Input file that
     /// is used in member functions.

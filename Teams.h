@@ -68,6 +68,7 @@ public:
      *         array.
      */
     Team* getTeam(int index) const;
+
 private:
     /// An integer that holds the amount of teams stored in the teams dynamic
     /// array.

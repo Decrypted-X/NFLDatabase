@@ -106,6 +106,7 @@ public:
      * @return A string object that holds the date the stadium opened.
      */
     int getDateOpened() const;
+
 private:
     /// A string that holds the name of the team.
     string teamName;

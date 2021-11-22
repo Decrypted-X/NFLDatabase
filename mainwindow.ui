@@ -460,7 +460,7 @@
      <x>0</x>
      <y>0</y>
      <width>1413</width>
-     <height>21</height>
+     <height>20</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuHelp">
@@ -480,7 +480,7 @@
     <property name="title">
      <string>Maintenance</string>
     </property>
-    <addaction name="actionMaintenance"/>
+    <addaction name="actionLoginWin"/>
    </widget>
    <addaction name="menuHelp"/>
    <addaction name="menuContact_Us"/>
@@ -497,9 +497,12 @@
     <string>Contact Us</string>
    </property>
   </action>
-  <action name="actionMaintenance">
+  <action name="actionLoginWin">
    <property name="text">
     <string>Maintenance</string>
+   </property>
+   <property name="whatsThis">
+    <string extracomment="Go to Admin Login Window"/>
    </property>
   </action>
  </widget>

@@ -15,6 +15,9 @@
 #include "TeamsInputFile.h"
 #include "helpwindow.h"
 #include "contactuswindow.h"
+#include "loginwindow.h"
+#include "addteamwindow.h"
+
 #include <QMainWindow>
 
 QT_BEGIN_NAMESPACE
@@ -78,6 +81,11 @@ private slots:
      * the contact us window and display it to the user.
      */
     void on_actionContact_Us_triggered();
+    /**
+     * When the user clicks the Maintenance button in the menu bar, the function is called to open
+     * the login window and display it to the user.
+     */
+    void on_actionLoginWin_triggered();
 
 private:
     /**
@@ -100,6 +108,10 @@ private:
     /// A pointer to a contact us window object that is created and displayed when the user clicks
     /// the contact us button.
     ContactUsWindow* contactUsWindow;
+
+    /// A pointer to a login window object that is created and displayed when the user clicks
+    /// the maintenance button.
+    LoginWindow* loginWindow;
 
     /// A pointer to a teams input file object that is used to get data from the NFL Database Input
     /// file and store it in a teams object.

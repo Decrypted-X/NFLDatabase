@@ -1,7 +1,5 @@
 <RCC>
-    <qresource prefix="/input">
-        <file>NFLDatabaseInput.dat</file>
-    </qresource>
+    <qresource prefix="/input"/>
     <qresource prefix="/images">
         <file>ConferenceHelp.png</file>
         <file>DisplayCapacityHelp.png</file>

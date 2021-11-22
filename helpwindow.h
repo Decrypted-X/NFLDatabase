@@ -13,6 +13,7 @@ class HelpWindow : public QDialog
 
 public:
     explicit HelpWindow(QWidget *parent = nullptr);
+
     ~HelpWindow();
 
 private:

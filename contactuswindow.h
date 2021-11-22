@@ -13,6 +13,7 @@ class ContactUsWindow : public QDialog
 
 public:
     explicit ContactUsWindow(QWidget *parent = nullptr);
+
     ~ContactUsWindow();
 
 private:
