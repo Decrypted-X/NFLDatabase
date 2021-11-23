@@ -22,7 +22,8 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
 
     // creates a teams input file object with a path to the input file
-    inputFile = new TeamsInputFile("C:/ProgramData/NFLDatabase/NFLDatabaseInput.dat");
+    inputFile = new TeamsInputFile(":/input/NFLDatabaseInput.dat",
+                                   "C:/ProgramData/NFLDatabase/NFLAdditionalInput.dat");
 
     // gets teams objects for the nfc and the afc and stores them in the nfcTeams and afcTeams
     // pointers respectively

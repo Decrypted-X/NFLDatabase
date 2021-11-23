@@ -9,7 +9,8 @@ AddTeamWindow::AddTeamWindow(QWidget *parent) :
 
     ui->statusMessage->setVisible(false);
 
-    inputFile = new TeamsInputFile("C:/ProgramData/NFLDatabase/NFLDatabaseInput.dat");
+    inputFile = new TeamsInputFile(":/input/NFLDatabaseInput.dat",
+                                   "C:/ProgramData/NFLDatabase/NFLAdditionalInput.dat");
 }
 
 

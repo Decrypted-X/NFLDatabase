@@ -24,8 +24,10 @@ public:
      *
      * @param source is the path to the NFL Database Input file that will be
      *        used by the TeamsInputFile class.
+     * @param additionalSource is the path to the additional NFL Database Input
+     *        file that stores teams added by maintenance.
      */
-    TeamsInputFile(QString source);
+    TeamsInputFile(QString source, QString additionalSource);
 
     /**
      * Get a pointer to a Teams object that holds all the teams that are
@@ -63,9 +65,12 @@ private:
 
     void addTeamProperty(QFile& inputFile, QTextStream& output, int property, bool isLast);
 
-    /// A QString object that holds the path to the NFL Database Input file that
-    /// is used in member functions.
-    QString source;
+    /// A QFile object that refers to the NFL Database Input file that holds the initial NFL teams.
+    QFile inputFile;
+
+    /// A QFile object that refers to the additional NFL Database Input file that holds NFL teams
+    /// added through maintenance.
+    QFile additionalInputFile;
 
     /// A delimiter that is used in functions to determine where to stop reading
     /// when taking in input.
