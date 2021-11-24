@@ -235,29 +235,49 @@ Teams* TeamsInputFile::getTeams(string conference)
 }
 
 
+// Function that writes a string property of a team object to the input file passed by using the
+// QTextStream object passed.
 void TeamsInputFile::addTeamProperty(QFile& inputFile, QTextStream& output, string property, bool isLast)
 {
-    output << property.c_str() << (isLast ? '\n' : '|');
+    // writes the property to the file
+    // writes a newline character if it is the last property of a team; otherwise, writes the delimiter
+    output << property.c_str() << (isLast ? '\n' : DELIMITER);
+
+    // flushes the output stream after writing to the file
     output.flush();
     inputFile.flush();
 }
 
 
+// Function that writes an integer property of a team object to the input file passed by using the
+// QTextStream object passed.
 void TeamsInputFile::addTeamProperty(QFile& inputFile, QTextStream& output, int property, bool isLast)
 {
-    output << property << (isLast ? '\n' : '|');
+    // writes the property to the file
+    // writes a newline character if it is the last property of a team; otherwise, writes the delimiter
+    output << property << (isLast ? '\n' : DELIMITER);
+
+    // flushes the output stream after writing to the file
     output.flush();
     inputFile.flush();
 }
 
 
+// Function that adds a new team object that is passed to the function to the end of the additional
+// maintenance input file.
 void TeamsInputFile::addTeam(Team& team)
 {
+    // open the additional input file to write
+    // if fails, display that the file was unable to open and close the application
     if (additionalInputFile.open(QIODevice::WriteOnly | QIODevice::Append | QIODevice::Text))
     {
+        // creates a QTextStream object that is used to write text to the end of the file
         QTextStream output(&additionalInputFile);
+        // sets the encoding of the QTextStream object to UTF-8
         output.setEncoding(QStringConverter::Encoding::Utf8);
 
+        // calls the addTeamProperty function for each property in the team object to write each team
+        // property to the file
         addTeamProperty(additionalInputFile, output, team.getTeamName(), false);
         addTeamProperty(additionalInputFile, output, team.getStadiumName(), false);
         addTeamProperty(additionalInputFile, output, team.getSeatingCapacity(), false);
@@ -268,6 +288,7 @@ void TeamsInputFile::addTeam(Team& team)
         addTeamProperty(additionalInputFile, output, team.getStadiumRoofType(), false);
         addTeamProperty(additionalInputFile, output, team.getDateOpened(), true);
 
+        // closes the additional maintence input file after finished writing
         additionalInputFile.close();
     }
     else

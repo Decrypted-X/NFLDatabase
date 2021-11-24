@@ -81,12 +81,17 @@ private slots:
      * the contact us window and display it to the user.
      */
     void on_actionContact_Us_triggered();
+
     /**
      * When the user clicks the Maintenance button in the menu bar, the function is called to open
      * the login window and display it to the user.
      */
     void on_actionLoginWin_triggered();
 
+    /**
+     * When the user clicks the Refresh Table button, the function is called to refresh the teams stored, the
+     * teams displayed, their order, and total capacity.
+     */
     void on_refreshTableButton_clicked();
 
 private:

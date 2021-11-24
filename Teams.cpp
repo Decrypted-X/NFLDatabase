@@ -2,7 +2,7 @@
 
 #include "Teams.h"
 
-// Team Data Members:
+// Teams Data Members:
 //     int    teamAmount;
 //     Team** teams;
 

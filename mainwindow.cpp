@@ -21,7 +21,7 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-    // creates a teams input file object with a path to the input file
+    // creates a teams input file object with a path to the input file and maintenance input file
     inputFile = new TeamsInputFile(":/input/NFLDatabaseInput.dat",
                                    "C:/ProgramData/NFLDatabase/NFLAdditionalInput.dat");
 
@@ -297,6 +297,8 @@ void MainWindow::on_actionContact_Us_triggered()
 }
 
 
+// The function is called when the user clicks the maintenance button. It creates and displays a log in
+// page to the user that is used to get to the maintenance page.
 void MainWindow::on_actionLoginWin_triggered()
 {
     // if the login window is not initialized, then create a new login window
@@ -313,10 +315,12 @@ void MainWindow::on_actionLoginWin_triggered()
 }
 
 
+// The function is called when the user clicks the refresh table button. It refreshes the data stored in
+// the private data member team objects, displays the updated teams, sorts the teams according to what
+// option is selected, and updates the NFL total capacity.
 void MainWindow::on_refreshTableButton_clicked()
 {
     updateTeams();
     displayTeams();
     on_sortSelect_currentTextChanged();
 }
-

@@ -61,8 +61,30 @@ private:
      */
     string getInputFromFile(QFile& inputFile);
 
+    /**
+     * Add a string property of a Team object to the input file specified in the parameter via the output
+     * text stream specified in the parameter. If it is the last property of a team input file, then append
+     * a newline character; otherwise, append the delimeter.
+     *
+     * @param inputFile is a reference to the input file that input is being added to.
+     * @param output is a reference to the QTextStream object that is used to write text to the input file.
+     * @param property is a string property of a team object that is being written to the input file.
+     * @param isLast is whether the property of a team object is the last property and determines whether the
+     *        delimiter or newline character is appended.
+     */
     void addTeamProperty(QFile& inputFile, QTextStream& output, string property, bool isLast);
 
+    /**
+     * Add an integer property of a Team object to the input file specified via the output text stream
+     * specified. If it is the last property of a team input file, then append a newline character;
+     * otherwise, append the delimeter.
+     *
+     * @param inputFile is a reference to the input file that input is being added to.
+     * @param output is a reference to the QTextStream object that is used to write text to the input file.
+     * @param property is an integer property of a team object that is being written to the input file.
+     * @param isLast is whether the property of a team object is the last property and determines whether the
+     *        delimeter or newline character is appended.
+     */
     void addTeamProperty(QFile& inputFile, QTextStream& output, int property, bool isLast);
 
     /// A QFile object that refers to the NFL Database Input file that holds the initial NFL teams.
