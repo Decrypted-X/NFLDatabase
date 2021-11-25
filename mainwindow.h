@@ -89,6 +89,14 @@ private slots:
     void on_actionLoginWin_triggered();
 
     /**
+     * When the user clicks the Display Total Select check box, the function is called to toggle whether or not
+     * to display the total capacity of the NFL.
+     *
+     * @param status is the status that tells whether the display total check box is checked or unchecked.
+     */
+    void on_displayTotalSelect_stateChanged(int status);
+
+    /**
      * When the user clicks the Refresh Table button, the function is called to refresh the teams stored, the
      * teams displayed, their order, and total capacity.
      */

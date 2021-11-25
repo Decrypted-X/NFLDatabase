@@ -315,6 +315,138 @@ void MainWindow::on_actionLoginWin_triggered()
 }
 
 
+// The function is called when the user toggles the display total select check
+// box. It toggles whether or not to display the NFL total capacity.
+void MainWindow::on_displayTotalSelect_stateChanged(int status)
+{
+    // 2 - display total is checked
+    // 0 - display total is unchecked
+    if (status == 2)
+    {
+        // integer used to store the total capacity of the nfl
+        int total = 0;
+
+        // loops through each spot in the nfc teams array and adds up the total capacity of
+        // each stadium without including stadiums already accounted for
+        for (int teamIndex = 0; teamIndex < nfcTeams->getTeamAmount(); teamIndex++)
+        {
+            // used to check if the stadium has been counted already
+            bool isValidAddition = true;
+
+            // loops through each previous spot in the nfc teams array to check if the stadium
+            // of the current team has already been counted
+            for (int i = teamIndex - 1; i >= 0; i--)
+            {
+                // checks if the stadium of the current team has already been counted for by a
+                // previous team
+                if (nfcTeams->getTeam(teamIndex)->getStadiumName().compare(
+                            nfcTeams->getTeam(i)->getStadiumName()) == 0)
+                {
+                    // if stadium is already counted, make the addition invalid so it is not
+                    // counted again
+                    isValidAddition = false;
+                    break;
+                }
+            }
+
+            // if the stadium name has not been included already, then add the seating capacity
+            // of the stadium to the total capacity of the nfl
+            if (isValidAddition)
+            {
+                total += nfcTeams->getTeam(teamIndex)->getSeatingCapacity();
+            }
+        }
+
+        // loops through each spot in the afc teams array and adds up the total capacity of
+        // each stadium without including stadiums already accounted for
+        for (int teamIndex = 0; teamIndex < afcTeams->getTeamAmount(); teamIndex++)
+        {
+            // used to check if the stadium has been counted already
+            bool isValidAddition = true;
+
+            // loops through each previous spot in the afc teams array to check if the stadium
+            // of the current team has already been counted
+            for (int i = teamIndex - 1; i >= 0; i--)
+            {
+                // checks if the stadium of the current team has already been counted for by a
+                // previous team
+                if (afcTeams->getTeam(teamIndex)->getStadiumName().compare(
+                            afcTeams->getTeam(i)->getStadiumName()) == 0)
+                {
+                    // if stadium is already counted, make the addition invalid so it is not
+                    // counted again
+                    isValidAddition = false;
+                    break;
+                }
+            }
+
+            // if the stadium is valid, continue to check the nfc teams to ensure it has not been
+            // counted for
+            if (isValidAddition)
+            {
+                // checks the nfc teams compared to the current afc team to ensure the stadium has
+                // not been counted already
+                for (int i = 0; i < nfcTeams->getTeamAmount(); i++)
+                {
+                    // checks if the stadium of the current team has already been counted for
+                    // by a team in the nfc
+                    if (afcTeams->getTeam(teamIndex)->getStadiumName().compare(
+                                nfcTeams->getTeam(i)->getStadiumName()) == 0)
+                    {
+                        // if stadium is already counted, make the addition invalid so it is not
+                        // counted again
+                        isValidAddition = false;
+                        break;
+                    }
+                }
+
+                // if the stadium name has not been included already, then add the seating capacity
+                // of the stadium to the total capacity of the nfl
+                if (isValidAddition)
+                {
+                    total += afcTeams->getTeam(teamIndex)->getSeatingCapacity();
+                }
+            }
+        }
+
+        // holds an unformatted total capacity
+        QString totalCapacity = QString::number(total);
+
+        // used to hold a formatted total capacity in the format of #,###
+        QString formattedTotalCapacity;
+
+        // holds the amount of digits in the total capacity
+        int digitCount = 1;
+
+        // creates the formatted total capacity and assigns it to formattedTotalCapcity by
+        // adding commas after every 3 digits
+        for (int i = totalCapacity.length() - 1; i >= 0; i--, digitCount++)
+        {
+            // adds another digit to the front of the formatted total capacity text
+            formattedTotalCapacity.prepend(totalCapacity[i]);
+
+            // if there has been 3 digits and there are still more digits remaining, add a comma
+            // to the front of the formatted total capacity text
+            if (digitCount % 3 == 0 && i - 1 >= 0)
+            {
+                formattedTotalCapacity.prepend(',');
+            }
+        }
+
+        // sets total capacity to the label and makes it visible for the user to see
+        ui->totalLabel->setVisible(true);
+        ui->totalAmountLabel->setText(formattedTotalCapacity);
+        ui->totalAmountLabel->setVisible(true);
+    }
+    else
+    {
+        // hides the total capacity of the nfl when the check box is unchecked
+        ui->totalLabel->setVisible(false);
+        ui->totalAmountLabel->setVisible(false);
+    }
+}
+
+
 // The function is called when the user clicks the refresh table button. It refreshes the data stored in
 // the private data member team objects, displays the updated teams, sorts the teams according to what
 // option is selected, and updates the NFL total capacity.
@@ -323,4 +455,13 @@ void MainWindow::on_refreshTableButton_clicked()
     updateTeams();
     displayTeams();
     on_sortSelect_currentTextChanged();
+
+    if (ui->displayTotalSelect->isChecked())
+    {
+        on_displayTotalSelect_stateChanged(2);
+    }
+    else
+    {
+        on_displayTotalSelect_stateChanged(0);
+    }
 }
